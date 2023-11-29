@@ -1,0 +1,32 @@
+<%- include('../layouts/header') %>
+
+<a href="/" class="btn btn-info ms-2 mb-5 mt-4" style="margin-top:5px;">Back</a>
+<div class="row">    
+    <div class="col-3"></div>
+    <div class="col-6">
+      <% if(message != '') { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong><%= message %></strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% } %>
+        <h3 class="ms-0">Find Result</h3>
+        <form method="post" class="needs-validation">
+            <div class="mb-3 form-group-row">
+              <label for="rollNumber" class="form-label">Roll no : </label>
+              <input type="number" min="1" name="Roll_No" class="form-control" required>
+            </div>
+
+            <div class="mb-3 form-group-row">
+              <label for="name" class="form-label">Name : </label>
+              <input type="text" name="Name" class="form-control" required>
+            </div>
+            <button class="btn btn-primary me-2" type="submit" >Search</button>
+            <button class="btn btn-danger ms-2" type="reset">Clear</button>
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+
+

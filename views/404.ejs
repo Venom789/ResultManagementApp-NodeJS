@@ -1,0 +1,51 @@
+<%- include('layouts/header') %>
+<div class="container text-center mt-5">
+        <h2 class="mb-4">Oooopss !! Error 404: Page Not Found : Redirecting to HomePage</h2>
+
+        <h3></h3>
+
+        <a class='fa fa-home' href="/"> Go To HomePage</a>
+</div>
+    
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h3 {
+            font-family: "Montserrat";
+            font-size: 90px;
+        }
+</style>
+    <script>
+        let timeSecond = 5;
+        const timeH = document.querySelector("h3");
+        displayTime(timeSecond);
+        const countDown = setInterval(() => {
+            timeSecond--;
+            displayTime(timeSecond);
+            if (timeSecond == 0 || timeSecond < 1) {
+                endCount();
+                clearInterval(countDown);
+            }
+        }, 1000);
+        function displayTime(second) {
+            const min = Math.floor(second / 60);
+            const sec = Math.floor(second % 60);
+            timeH.innerHTML = `${sec}`;
+        }
+        function endCount() {
+            timeH.innerHTML = "Time out";
+            window.location = "/"
+        }
+    </script>

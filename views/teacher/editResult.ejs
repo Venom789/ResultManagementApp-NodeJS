@@ -1,0 +1,32 @@
+<%- include('../layouts/header') %>
+
+    <div class="row">
+        <div class="col-3 ms-3">
+            <a href="/api/teacher/dashboard" class="btn btn-info" style="margin-top:5px;">Back</a>
+        </div>
+        <div class="col-6 mt-5">            
+            <h5>Update Result Of Roll No  <%= std.Roll_No %></h5>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Roll No : </label>
+                    <input type="number" min="1" name="Roll_No" value="<%= std.Roll_No %>" required class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name : </label>
+                    <input type="text" name="Name" required class="form-control" value="<%= std.Name %>">
+                </div>               
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Date of Birth : </label>
+                    <input type="date" name="DOB" value="<%= std.DOB %>" required class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Score : </label>
+                    <input type="number" min="1" name="Score" value="<%= std.Score %>" required class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>

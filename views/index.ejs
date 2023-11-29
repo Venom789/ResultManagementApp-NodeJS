@@ -1,0 +1,19 @@
+<%- include('layouts/header') %>
+
+<div class="container" style="margin-top: 10%;">
+  <% if(message != '') { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong><%= message %></strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% } %>
+  <p class="text-center h4">Login as</p>
+  <div class="container text-center my-5">
+    
+      <!-- <button type="button" class="btn btn-primary">Teacher Login</button> -->
+      <a class="btn btn-primary mx-3" href="/api/teacher/login">Teacher Login</a>
+      <a class="btn btn-primary mx-3" href="/api/student/login">Student Login</a>
+  </div>
+</div>
+  
+ 

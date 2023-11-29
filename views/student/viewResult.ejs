@@ -1,0 +1,77 @@
+<%- include('../layouts/header') %>
+
+<a href="/" class="btn btn-danger ms-3" style="margin-top:5px;">Logout</a>
+<!-- <div class="row">
+    <div class="col-3"></div>
+    <div class="container col-6 mt-5" id="resultTemplate">
+        <div class="row mb-3 text-center">
+            <h3>Result</h3>
+        </div>
+        <div class="row">
+            <div class="col-3 d-flex justify-content-end">
+                <h5>Roll Number :</h5>
+            </div>
+            <div class="col-3">
+                <h5><%= showResult.Roll_No %></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 d-flex justify-content-end">
+                <h5>Name :</h5>
+            </div>
+            <div class="col-3">
+                <h5><%= showResult.Name %></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 d-flex justify-content-end">
+                <h5>Date of Birth :</h5>
+            </div>
+            <div class="col-3">
+                <h5><%= showResult.DOB %></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 d-flex justify-content-end">
+                <h5>Score :</h5>
+            </div>
+            <div class="col-3">
+                <h5><%= showResult.Score %></h5>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-3"></div>
+</div> -->
+
+<div class="container mt-5">
+    <div class="card" style="width: 50%; margin-left: 25%;">
+        <div class="card-body">
+          <h4 class="card-title text-center">Result</h4><br>
+          
+          <table class="table table-striped">
+            <tbody>        
+              <tr>
+                <td>Roll no.</td>
+                <td>: <%= showResult.Roll_No %> </td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>: <%= showResult.Name %></td>
+              </tr>
+              <tr>
+                <td>Date of Birth</td>
+                <td>: <%= showResult.DOB %></td>
+              </tr>
+              <tr>
+                <td>Score</td>
+                <td>: <%= showResult.Score %></td>
+              </tr>
+              
+            </tbody>
+          </table> 
+          
+        </div>
+      </div>
+   
+</div>

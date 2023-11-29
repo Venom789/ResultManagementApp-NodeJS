@@ -1,0 +1,107 @@
+<%- include('../layouts/header') %>
+<div class="container mt-3">
+    <div class="position-relative">
+        <% if(user) { %>
+            <h5>Welcome <%= user.email %></h5>
+            <a class="btn btn-danger position-absolute top-0 end-0" href="/api/teacher/logout">Logout</a>
+        <% } %>
+
+    </div>
+    <div class="container mt-5">
+        <% if(message != '') { %>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong><%= message %></strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } %>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-6">
+            <p id="studentCount" class="">Total <%= student.length %> Students </p>
+            <a class="btn btn-info" id="addRecord" href="/api/teacher/addResult">Add Record</a>
+        </div>
+        <div class="col-6 text-end mt-5">
+            <input type="text" name="" id="myInput" placeholder="Search for names..." onkeyup="searchFun()">
+        </div>        
+    </div>
+    
+    <table class="table table-bordered mt-4" id="myTable">
+        <thead>
+            <tr>
+                <!-- <th scope="col">id</th> -->
+                <th scope="col">Roll No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Score</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%  student.forEach(std => { %>
+                <tr>
+                    <td scope="row"><%= std.Roll_No %></td>
+                    <td scope="row"><%= std.Name %></td>
+                    <td scope="row"><%= std.DOB %></td>
+                    <td scope="row"><%= std.Score %></td>
+                    <td>
+                        <ul class="list-inline m-1 text-center">                        
+                            <li class="list-inline-item">
+                                <a class="fas fa-pen" href="/api/teacher/editResult/<%= std._id %>" style='color: rgb(0, 42, 255)'></a>
+                            </li>
+                            <li class="list-inline-item ms-2">
+                                <a class="fa fa-trash" href="/api/teacher/delete/<%= std._id %>" style='color: red' onclick="return confirm('Are you sure you want to delete this item?')"></a>    
+                            </li>
+                        </ul>
+                          
+                    </td>
+                    
+                </tr>
+            <%}) %>
+        </tbody>
+    </table><br>
+
+    <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            Page :           
+            <% for(let j=1; j<=totalPages; j++){
+                %>
+                <li id="page<%= j %>" class="page-item ms-1"><a class="page-link" href="?page=<%= j %>"><%= j %></a></li>
+                <%
+               }
+            %>
+        
+        </ul>
+    </nav>
+    
+    
+
+</div>
+
+
+
+<script>
+    //pagination active button----start
+    let params = new URLSearchParams(location.search);
+    var currPage = params.get('page');
+    document.getElementById('page'+currPage).classList.add('active');
+    //pagination----end
+
+    const searchFun = ()=>{
+        let filter = document.getElementById('myInput').value.toUpperCase();
+        let myTable = document.getElementById('myTable');
+        let tr = myTable.getElementsByTagName('tr');
+
+        for(var i=0;i<tr.length;i++){
+            let td = tr[i].getElementsByTagName('td')[1];
+            if(td){
+                let textvalue = td.textContent || td.innerHTML;
+                if(textvalue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display = "";
+                }else{
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
